@@ -24,7 +24,10 @@ Core action for users:
 - If yes, describe at least one change and why you made it.
 - A: Added task_id to Task class. This was because I needed a way to uniquely identify tasks for editing and deleting, and the combination of description and due time was not guaranteed to be unique. Adding a task_id made it easier to manage tasks without relying on potentially ambiguous attributes.
 I will be using explicit list type hints instead of generic list returns. This is because it provides more clarity on what type of data is being returned, which can help with debugging and understanding the code.
-
+I accepted these changes while I rejected Date/time as string fields. Copilot suggested parsing `due_time` and `due_date` into proper datetime objects
+at creation time. I rejected this because zero-padded HH:MM strings sort correctly
+using plain string comparison, and adding `__post_init__` validation would increase
+complexity without meaningful benefit at this project's scale.
 ---
 
 ## 2. Scheduling Logic and Tradeoffs
