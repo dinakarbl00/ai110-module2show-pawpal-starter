@@ -6,11 +6,24 @@
 
 - Briefly describe your initial UML design.
 - What classes did you include, and what responsibilities did you assign to each?
+- A:    I designed four classes for this scenario. 
+Task: this is responsible for the details about the work, such as description, due time, due date, frequency, priority, completed and task type.
+Pet: this is responsible for the pet's identity, such as name, species, breed and age. It also has a list of Task objects.
+Owner: this is the top-level data store. It holds pets and provides get_all_tasks(), which flattens every pet's tasks into one flat list of (pet_name, Task) tuples. This single method is the only way the Scheduler reads data, which keeps the two classes loosely coupled.
+Scheduler: this is more of a business logic. The Scheduler holds no data; it only reads from Owner and returns results. This makes it easy to test and extend.
+
+Core action for users:
+1. Add a pet with identifying information (name, species, breed, age)
+2. Schedule a care task for a pet (description, time, date, frequency, priority)
+3. View today's schedule sorted and filtered in a useful, prioritised way
 
 **b. Design changes**
 
 - Did your design change during implementation?
+- A: Yes
 - If yes, describe at least one change and why you made it.
+- A: Added task_id to Task class. This was because I needed a way to uniquely identify tasks for editing and deleting, and the combination of description and due time was not guaranteed to be unique. Adding a task_id made it easier to manage tasks without relying on potentially ambiguous attributes.
+I will be using explicit list type hints instead of generic list returns. This is because it provides more clarity on what type of data is being returned, which can help with debugging and understanding the code.
 
 ---
 
