@@ -17,7 +17,7 @@ python main.py
 streamlit run app.py
 ```
 
-![PawPal+ Dashboard](ai110-module2show-pawpal-starter\app_screenshot.png)
+![PawPal+ Dashboard](app_screenshot.png)
 
 ---
 
